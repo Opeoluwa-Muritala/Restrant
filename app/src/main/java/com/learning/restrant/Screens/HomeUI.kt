@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.learning.restrant.Data.FoodItems
+import com.learning.restrant.Navigation.bottombar
 import com.learning.restrant.R
 
 @Composable
@@ -39,7 +40,17 @@ fun Home(){
     var search by remember {
         mutableStateOf("")
     }
+val navController = rememberNavController()
 
+Scaffold(
+            topBar = {
+                topappbar()
+            },
+            backgroundColor = if (isSystemInDarkTheme()) Color.DarkGray else Color.LightGray,
+            bottomBar = {
+                 bottombar()
+            }
+        ) {
 
         Column(
             Modifier
@@ -50,26 +61,26 @@ fun Home(){
         ) {
 
 
-        OutlinedTextField(
-            value = search,
-            onValueChange = {search = it},
-            label = {
-                Text(text = "Search Food")
-            },
-            leadingIcon = {
-                Icon(Icons.Default.Search, null)
-            },
-            shape = RoundedCornerShape(10.dp),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp)
-        )
+            OutlinedTextField(
+                value = search,
+                onValueChange = { search = it },
+                label = {
+                    Text(text = "Search Food")
+                },
+                leadingIcon = {
+                    Icon(Icons.Default.Search, null)
+                },
+                shape = RoundedCornerShape(10.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp)
+            )
 
             listitems()
             foodItems()
             Offersanddiscount()
 
-
+        }
 
     }
 }

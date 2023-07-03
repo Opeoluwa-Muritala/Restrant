@@ -22,24 +22,17 @@ import com.learning.restrant.Screens.*
 
 @Composable
 fun Navi() {
-    Scaffold(
-        topBar = {
-            topappbar()
-        },
-        backgroundColor = if (isSystemInDarkTheme()) Color.DarkGray else Color.LightGray,
-        bottomBar = {
-            bottombar()
-        }
-    ) {
-        NavHost(navController = rememberNavController(), startDestination = "Login") {
+    val navController = rememberNavController()
+
+        NavHost(navController = navController , startDestination = "Home") {
             composable("Home") {
-                Home()
+                           Home()
             }
             composable("Notification") {
-                Notifications()
+                    Notifications()
             }
             composable("Cart") {
-                Cart()
+                    Cart()
             }
             composable("Login") {
                 Login()
@@ -53,7 +46,6 @@ fun Navi() {
             composable("Order") {
                 Order()
             }
-        }
     }
 }
 
@@ -68,9 +60,7 @@ fun bottombar(){
             selected = (selectedIndex.value == 0),
             onClick = {
                 selectedIndex.value = 0
-                navController.navigate("Home"){
-                    popUpTo("Home")
-                }
+
                       },
             icon = { Icon(imageVector = Icons.Rounded.Home, contentDescription = "Home")},
             label = {}
@@ -79,9 +69,7 @@ fun bottombar(){
             selected = (selectedIndex.value == 1),
             onClick = {
                 selectedIndex.value = 1
-                navController.navigate("Notification"){
-                    popUpTo("Home")
-                }
+
                       },
             icon = { Icon(imageVector = Icons.Rounded.Notifications, contentDescription = "Notifications")},
             label = {}
@@ -90,9 +78,7 @@ fun bottombar(){
             selected = (selectedIndex.value == 2),
             onClick = {
                 selectedIndex.value = 2
-                navController.navigate("Cart"){
-                    popUpTo("Home")
-                }
+
                       },
             icon = { Icon(imageVector = Icons.Rounded.ShoppingCart, contentDescription = "Cart")},
             label = {}
@@ -101,9 +87,7 @@ fun bottombar(){
             selected = (selectedIndex.value == 3),
             onClick = {
                 selectedIndex.value = 3
-                navController.navigate("Profile"){
-                    popUpTo("Home")
-                }
+
                       },
             icon = { Icon(imageVector = Icons.Rounded.Person, contentDescription = "Profile")},
             label = {}

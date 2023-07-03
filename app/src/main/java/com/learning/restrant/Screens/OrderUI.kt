@@ -21,16 +21,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun Order(){
-
+    val navcontroller =rememberNavController()
 
     Box(
         contentAlignment = Alignment.TopCenter,
         modifier = Modifier.fillMaxSize()
     ) {
         Box{
+            Box(){
+                IconButton(onClick = {navcontroller.navigate("Home"){
+                    popUpToRoute
+                } }) {
+
+                }
+            }
             Image(
                 painter = painterResource(id = R.drawable.bugar),
                 contentDescription = null,
@@ -65,7 +73,9 @@ fun Order(){
                         )
                         Spacer(modifier = Modifier.width(100.dp))
                         Box(
-                            modifier = Modifier.size(50.dp).background(Color.DarkGray,RoundedCornerShape(5.dp)),
+                            modifier = Modifier
+                                .size(50.dp)
+                                .background(Color.DarkGray, RoundedCornerShape(5.dp)),
                             contentAlignment = Alignment.Center
                         ) {
                             Text(

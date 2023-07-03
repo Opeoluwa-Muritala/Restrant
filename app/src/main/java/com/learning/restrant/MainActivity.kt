@@ -8,6 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.learning.restrant.Navigation.Navi
 import com.learning.restrant.Screens.*
 import com.learning.restrant.ui.theme.RestrantTheme
 
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Order()
+                    Notifications()
                 }
             }
         }

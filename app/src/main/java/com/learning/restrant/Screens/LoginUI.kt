@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.learning.restrant.R
 import kotlinx.coroutines.delay
 
@@ -31,6 +32,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun Login(){
 
+    var navController = rememberNavController()
     var username by remember {
         mutableStateOf("")
     }
@@ -163,7 +165,8 @@ fun Login(){
         }
             } else {
                 Button(
-                    onClick = { loading.value = true },
+                    onClick = { loading.value = true
+                       },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.White,
                         backgroundColor = Color.Red,
@@ -175,8 +178,9 @@ fun Login(){
                 }
             }
             LaunchedEffect(key1 = Unit,) {
-                delay(5000)
-                loading.value = false
+                delay(2000)
+                 loading.value = false
+
             }
         }
         Spacer(modifier = Modifier.height(20.dp))
